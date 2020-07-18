@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+		integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+	<title>Document</title>
+</head>
+
+<body>
+	<div class="container">
+		<!-- Content here -->
+		<div class="row"
+			style="background-color: coral;margin:60px;height:600px;
+		border-top-left-radius: 25px;border-top-right-radius: 25px;border-bottom-right-radius: 25px;border-bottom-left-radius: 25px;">
+			<div class="col-md-4"
+				style="background-color: black;border-top-left-radius: 25px;border-bottom-left-radius: 25px;">
+				<div class="student_text"
+					style="text-shadow: 2px 4px beige;color: coral;font-size: 60px;font-family: fantasy;margin-top: 158px;margin-left: 60px;">
+					STUDENT GRADE CALCY</div>
+			</div>
+			<div class="col-md-4" style="margin-left: 156px;
+			margin-top: 185px;">
+				<!-- <form> -->
+				<div class="form-group">
+					<!-- <label for="exampleInputEmail1">Email address</label> -->
+					<input type="email" class="form-control" id="web" aria-describedby="emailHelp"
+						placeholder="Enter Web Programming Marks">
+
+				</div>
+				<div class="form-group">
+					<!-- <label for="exampleInputPassword1">Password</label> -->
+					<input type="text" class="form-control" id="math" placeholder="Enter Math Marks">
+				</div>
+				<div class="form-group">
+					<!-- <label for="exampleInputPassword1">Password</label> -->
+					<input type="text" class="form-control" id="computer" placeholder="Enter Computer Marks">
+				</div>
+				<div class="form-group">
+					<!-- <label for="exampleInputPassword1">Password</label> -->
+					<input type="text" class="form-control" id="physics" placeholder="Enter Physics Marks">
+				</div>
+
+				<!-- <button type="submit" class="btn btn-primary">Submit</button> -->
+				<input type="button" class="btn btn-primary" style="margin-left: 63px;
+				margin-top: 37px;
+				color: coral;
+				background-color: black;
+				font-weight: 700;
+				border-radius: 24px;
+				text-shadow: 1px 1px;
+				box-shadow: 5px 4px beige;
+				
+				opacity: 0.9;" value="SHOW PERCENTAGE" onclick="calcy()">
+				<!-- </form> -->
+
+			</div>
+			<span id="result_msg" style="margin-left: 41%;
+			font-size: 18px;
+			font-weight: 700;"></span>
+			<span id="result_grade" style="margin-left: 62%;
+			font-size: 18px;
+			font-weight: 700;margin-top: -22px;"></span>
+
+		</div>
+
+	</div>
+	<script>
+		function calcy() {
+			let web = document.getElementById('web').value;
+			let math = document.getElementById('math').value;
+			let computer = document.getElementById('computer').value;
+			let physics = document.getElementById('physics').value;
+			let grade = '';
+			if (web != '' && math != '' && computer != '' && physics != '') {
+				let total = parseInt(web) + parseInt(math) + parseInt(computer) + parseInt(physics);
+				let percentage = (total / 400) * 100;
+
+				// checking grade
+				if (percentage <= 100 && percentage >= 80) {
+					grade = "A";
+				} else if (percentage <= 79 && percentage >= 60) {
+					grade = "B";
+				} else if (percentage <= 59 && percentage >= 35) {
+					grade = "C";
+				} else if (percentage < 35) {
+					grade = "F";
+				}
+
+				let showmsg = document.getElementById('result_msg').innerHTML = 'Out of 400 your Total is : ' + total +
+					' and Percentage is : ' +
+					percentage.toFixed(2) + " % ";
+				let showgrade = document.getElementById('result_grade').innerHTML = ' Grade : ' + grade;
+			} else {
+				alert("Please enter marks.")
+			}
+		}
+	</script>
+</body>
+
+</html>
